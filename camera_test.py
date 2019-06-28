@@ -10,7 +10,7 @@ while True:
     cv2.imshow('frame',full_image)
     
     k = cv2.waitKey(5)
-    if k == ord('q'):  #'q' key to stop program
+    if k == ord('q'):
         break
     if k > 0:
 	      print(k)
