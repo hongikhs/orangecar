@@ -13,4 +13,4 @@ while True:
     if k == ord('q'):
         break
     if k > 0:
-	      print(k)
+	print(k)
