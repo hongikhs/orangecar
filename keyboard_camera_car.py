@@ -3,19 +3,19 @@ from pyA20.gpio import gpio, port
 from time import sleep
 from orangepwm import OrangePwm
 
-SPEED_L = 70
-SPEED_R = 70
-SPEED_OUT = 100
-SPEED_IN = 50
+SPEED_L = 40
+SPEED_R = 40
+SPEED_OUT = 60
+SPEED_IN = 20
 
 gpio.init()
 
 re = port.PA21		# ENA
 rb = port.PA18		# IN1
-rf = port.PG8		  # IN2
-lf = port.PG9		  # IN3
-lb = port.PG6		  # IN4
-le = port.PG7		  # ENB
+rf = port.PG8		# IN2
+lf = port.PG9		# IN3
+lb = port.PG6		# IN4
+le = port.PG7		# ENB
 
 rp = OrangePwm(100, re)
 lp = OrangePwm(100, le)
@@ -36,16 +36,17 @@ c.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
 c.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 
 while True:
-	_,full_image = c.read()
+	ret, frame = c.read()
 	        
-	cv2.imshow('frame',full_image)
+	cv2.imshow('camera', frame)
 	    
 	k = cv2.waitKey(5)
+	
 	if k == ord('q'):
 		break
 	if k > 0:
 		print(k)
-	if k == 82:		# UP
+	if k == 82:	# UP
 		lp.changeDutyCycle(SPEED_L)
 		rp.changeDutyCycle(SPEED_R)
 	elif k == 81:	# LEFT
