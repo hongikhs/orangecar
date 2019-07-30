@@ -1,6 +1,5 @@
 import cv2
 from pyA20.gpio import gpio, port
-from time import sleep
 from orangepwm import OrangePwm
 
 SPEED_L = 40
