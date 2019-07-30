@@ -5,11 +5,12 @@ c.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
 c.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 
 while True:
-    _,full_image = c.read()
+    ret, frame = c.read()
         
-    cv2.imshow('frame',full_image)
+    cv2.imshow('camera', frame)
     
     k = cv2.waitKey(5)
+    
     if k == ord('q'):
         break
     if k > 0:
