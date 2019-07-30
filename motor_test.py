@@ -3,12 +3,12 @@ from time import sleep
 
 gpio.init()
 
-le = port.PA21		  # ENA
-lb = port.PA18		  # IN1
-lf = port.PG8		    # IN2
-rb = port.PG9		    # IN3
-rf = port.PG6		    # IN4
-re = port.PG7		    # ENB
+re = port.PA21		  # ENA
+rb = port.PA18		  # IN1
+rf = port.PG8		    # IN2
+lf = port.PG9		    # IN3
+lb = port.PG6		    # IN4
+le = port.PG7		    # ENB
 
 gpio.setcfg(le, 1)	# gpio.OUTPUT : 1
 gpio.setcfg(lf, 1)
