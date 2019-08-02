@@ -7,6 +7,7 @@ cap = cv2.VideoCapture('slow.flv')
 ret,frame = cap.read()
  
 # setup initial location of window
+#r,h,c,w = 250,90,400,125  # simply hardcoded the values
 r,h,c,w = 250,90,400,125  # simply hardcoded the values
 track_window = (c,r,w,h)
  
