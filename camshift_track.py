@@ -8,7 +8,7 @@ ret,frame = cap.read()
  
 # setup initial location of window
 #r,h,c,w = 250,90,400,125  # simply hardcoded the values
-r,h,c,w = 250,90,400,125  # simply hardcoded the values
+r,h,c,w =150,100,200,150  # simply hardcoded the values
 track_window = (c,r,w,h)
  
 # set up the ROI for tracking
