@@ -1,37 +1,39 @@
 import datetime
 import cv2
 
-capture = cv2.VideoCapture("/Image/Star.mp4")
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
+c = cv2.VideoCapture(0)
+c.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
+c.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
+fourcc = cv2.VideoWriter_fourcc(*'h264')
 record = False
 
 while True:
-    if(capture.get(cv2.CAP_PROP_POS_FRAMES) == capture.get(cv2.CAP_PROP_FRAME_COUNT)):
-        capture.open("/Image/Star.mp4")
+    #if(c.get(cv2.CAP_PROP_POS_FRAMES) == c.get(cv2.CAP_PROP_FRAME_COUNT)):
+    #    c.open("/Image/Star.mp4")
 
-    ret, frame = capture.read()
+    ret, frame = c.read()
     cv2.imshow("VideoFrame", frame)
 
     now = datetime.datetime.now().strftime("%d_%H-%M-%S")
     key = cv2.waitKey(33)
 
-    if key == 27:
+    if key == ord('q'):
         break
-    elif key == 26:
-        print("캡쳐")
-        cv2.imwrite("D:/" + str(now) + ".png", frame)
-    elif key == 24
-        print("녹화 시작")
+    elif key == ord('c'):
+        print("capture")
+        cv2.imwrite("./" + str(now) + ".png", frame)
+    elif key == ord('r'):
+        print("record")
         record = True
-        video = cv2.VideoWriter("D:/" + str(now) + ".avi", fourcc, 20.0, (frame.shape[1], frame.shape[0]))
-    elif key == 3
-        print("녹화 중지")
+        video = cv2.VideoWriter("./" + str(now) + ".mp4", fourcc, 20.0, (frame.shape[1], frame.shape[0]))
+    elif key == ord('s'):
+        print("stop")
         record = False
         video.release()
         
     if record == True:
-        print("녹화 중..")
+        print("recording..")
         video.write(frame)
 
-capture.release()
+c.release()
 cv2.destroyAllWindows()
